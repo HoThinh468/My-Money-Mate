@@ -17,3 +17,5 @@ dependencyResolutionManagement {
 rootProject.name = "My_Money_Mate"
 include(":androidApp")
 include(":shared")
+include(":features:mywallet")
+include(":features:budgets")
