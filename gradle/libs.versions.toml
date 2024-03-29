@@ -12,6 +12,7 @@ androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
+androidGradlePlugin = "8.2.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -28,6 +29,8 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -35,3 +38,10 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+
+# Customed plugin for mymoneymate
+mymoneymateFeaturePresentation = { id = "mymoneymate.android.feature.presentation", version = "unspecified" }
+mymoneymateAndroidLibrary = { id = "mymoneymate.android.library", version = "unspecified" }
+mymoneymateAndroidLibraryCompose = { id = "mymoneymate.android.library.compose", version = "unspecified" }
+mymoneymateAndroidApplication = { id = "mymoneymate.android.application", version = "unspecified" }
+mymoneymateAndroidApplicationCompose = { id = "mymoneymate.android.application.compose", version = "unspecified" }
