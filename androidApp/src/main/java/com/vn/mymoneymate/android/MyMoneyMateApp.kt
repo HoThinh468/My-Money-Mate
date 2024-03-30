@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.vn.designsystem.components.MyMoneyMateSuperFab
 import com.vn.designsystem.theme.MyMoneyMateTheme
-import com.vn.mymoneymate.android.navigation.BottomNavBar
+import com.vn.mymoneymate.android.navigation.MyMoneyMateBottomNavBar
 import com.vn.mymoneymate.android.navigation.MyMoneyMateNavHost
 
 @Composable
@@ -26,7 +26,7 @@ fun MyMoneyMateApp() {
                 }
             },
             bottomBar = {
-                BottomNavBar(
+                MyMoneyMateBottomNavBar(
                     appState.navController,
                     appState.currentDestination,
                     appState.topLevelDestinations

@@ -29,5 +29,5 @@ dependencies {
     // features
     implementation(projects.features.mywallet)
     implementation(projects.features.budgets)
-
+    implementation(projects.features.report)
 }

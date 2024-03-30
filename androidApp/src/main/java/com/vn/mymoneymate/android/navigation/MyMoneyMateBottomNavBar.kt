@@ -14,7 +14,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 
 @Composable
-fun BottomNavBar(
+fun MyMoneyMateBottomNavBar(
     navController: NavController,
     currentDestination: NavDestination?,
     topLevelDestinations: List<TopLevelDestination>

@@ -7,6 +7,7 @@ import com.vn.budgets.budgetsScreen
 import com.vn.mymoneymate.android.MyMoneyMateAppState
 import com.vn.mywallet.MY_WALLET_ROUTE
 import com.vn.mywallet.myWalletScreen
+import com.vn.report.reportScreen
 
 @Composable
 fun MyMoneyMateNavHost(
@@ -21,5 +22,6 @@ fun MyMoneyMateNavHost(
     ) {
         myWalletScreen()
         budgetsScreen()
+        reportScreen()
     }
 }
