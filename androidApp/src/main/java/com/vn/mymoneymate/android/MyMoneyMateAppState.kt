@@ -1,4 +1,4 @@
-package com.vn.mymoneymate.android.ui
+package com.vn.mymoneymate.android
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable

@@ -1,4 +1,4 @@
-package com.vn.mymoneymate.android
+package com.vn.designsystem.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

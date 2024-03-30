@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import com.vn.budgets.budgetsScreen
-import com.vn.mymoneymate.android.ui.MyMoneyMateAppState
+import com.vn.mymoneymate.android.MyMoneyMateAppState
 import com.vn.mywallet.MY_WALLET_ROUTE
 import com.vn.mywallet.myWalletScreen
 

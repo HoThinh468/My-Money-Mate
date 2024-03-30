@@ -7,10 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.vn.mymoneymate.android.ui.CustomFAB
+import com.vn.designsystem.components.MyMoneyMateSuperFab
+import com.vn.designsystem.theme.MyMoneyMateTheme
 import com.vn.mymoneymate.android.navigation.BottomNavBar
 import com.vn.mymoneymate.android.navigation.MyMoneyMateNavHost
-import com.vn.mymoneymate.android.ui.rememberAppState
 
 @Composable
 fun MyMoneyMateApp() {
@@ -22,7 +22,7 @@ fun MyMoneyMateApp() {
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
             floatingActionButton = {
-                CustomFAB { // TODO Show add transaction screen
+                MyMoneyMateSuperFab { // TODO Show add transaction screen
                 }
             },
             bottomBar = {
