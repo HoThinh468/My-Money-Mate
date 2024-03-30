@@ -1,4 +1,4 @@
-package com.vn.mymoneymate.android.ui
+package com.vn.designsystem.components
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -8,7 +8,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 
 @Composable
-fun CustomFAB(onClick: () -> Unit) {
+fun MyMoneyMateSuperFab(onClick: () -> Unit) {
     FloatingActionButton(onClick = onClick, shape = CircleShape) {
         Icon(Icons.Filled.Add, contentDescription = "Floating button")
     }

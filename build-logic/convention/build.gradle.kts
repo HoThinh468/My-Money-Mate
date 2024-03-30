@@ -32,7 +32,7 @@ gradlePlugin {
         }
         register("androidFeaturePresentation") {
             id = "mymoneymate.android.feature.presentation"
-            implementationClass = "FeaturePresentationConventionPlugin"
+            implementationClass = "AndroidFeatureConventionPlugin"
         }
     }
 }

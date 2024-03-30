@@ -13,16 +13,8 @@ internal fun Project.configureAndroidCompose(
             libs.findVersion("compose-compiler").get().toString()
 
         dependencies {
-            add("implementation", libs.findLibrary("compose-ui").get())
-            add("implementation", libs.findLibrary("compose-nav").get())
-            add(
-                "implementation",
-                libs.findLibrary("compose-ui-tooling-preview").get()
-            )
-            add(
-                "implementation",
-                libs.findLibrary("compose-material3").get()
-            )
+            val bom = libs.findLibrary("androidx-compose-bom").get()
+            add("implementation", platform(bom))
         }
     }
 }
