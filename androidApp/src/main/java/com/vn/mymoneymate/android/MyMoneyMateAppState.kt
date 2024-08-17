@@ -23,8 +23,11 @@ class MyMoneyMateAppState(val navController: NavHostController) {
     val currentDestination: NavDestination?
         @Composable get() = navController.currentBackStackEntryAsState().value?.destination
 
-    val currentTopLevelDestination: TopLevelDestination?
+    private val currentTopLevelDestination: TopLevelDestination?
         @Composable get() = TopLevelDestination.getCurrentTopLevelDestination(currentDestination?.route)
+
+    val isAtTopDestination: Boolean
+        @Composable get() = currentTopLevelDestination != null
 
     val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.entries
 }

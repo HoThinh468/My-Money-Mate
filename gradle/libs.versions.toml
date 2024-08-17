@@ -13,6 +13,7 @@ espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.11.0"
 androidGradlePlugin = "8.2.2"
+compose-constraint-layout = "1.0.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -26,6 +27,7 @@ compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling
 compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-nav = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-nav" }
+compose-constraint-layout = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "compose-constraint-layout" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
