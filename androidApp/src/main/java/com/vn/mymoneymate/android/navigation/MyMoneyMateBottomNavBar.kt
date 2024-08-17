@@ -1,17 +1,18 @@
 package com.vn.mymoneymate.android.navigation
 
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun MyMoneyMateBottomNavBar(
@@ -19,11 +20,7 @@ fun MyMoneyMateBottomNavBar(
     currentDestination: NavDestination?,
     topLevelDestinations: List<TopLevelDestination>
 ) {
-
-    NavigationBar(
-        containerColor = MaterialTheme.colorScheme.onPrimary,
-        contentColor = MaterialTheme.colorScheme.primary
-    ) {
+    NavigationBar {
         topLevelDestinations.forEach { screen ->
             NavigationBarItem(
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
@@ -48,4 +45,14 @@ fun MyMoneyMateBottomNavBar(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun MyMoneyMateBottomNavBarPreview() {
+    MyMoneyMateBottomNavBar(
+        rememberNavController(),
+        null,
+        TopLevelDestination.entries
+    )
 }

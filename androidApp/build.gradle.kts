@@ -18,13 +18,9 @@ android {
 }
 
 dependencies {
+    // Shared & common
     implementation(projects.shared)
     implementation(projects.core.designsystem)
-
-    // compose
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.compose.nav)
-    implementation(libs.compose.material3)
 
     // features
     implementation(projects.features.mywallet)

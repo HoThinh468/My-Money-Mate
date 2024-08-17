@@ -7,6 +7,7 @@ import com.vn.budgets.budgetsScreen
 import com.vn.mymoneymate.android.MyMoneyMateAppState
 import com.vn.mywallet.MY_WALLET_ROUTE
 import com.vn.mywallet.myWalletScreen
+import com.vn.mywallet.transactions.addTransactionsScreen
 import com.vn.report.reportScreen
 
 @Composable
@@ -15,13 +16,17 @@ fun MyMoneyMateNavHost(
     modifier: Modifier,
     startDestinationRoute: String = MY_WALLET_ROUTE
 ) {
+    val navController = appState.navController
     NavHost(
-        navController = appState.navController,
+        navController = navController,
         modifier = modifier,
         startDestination = startDestinationRoute
     ) {
         myWalletScreen()
         budgetsScreen()
         reportScreen()
+        addTransactionsScreen(
+            onBackClick = navController::popBackStack
+        )
     }
 }

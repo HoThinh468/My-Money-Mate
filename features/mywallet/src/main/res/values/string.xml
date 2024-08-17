@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- My wallets -->
+    <string name="add_transactions_title">Add transactions</string>
+    <string name="save_button_text">Save</string>
+    <string name="transaction_title">Transaction title</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="add_category">Add category</string>
+    <string name="add_description">Add description</string>
+    <string name="add_image">Add image</string>
+    <string name="set_transaction_type">Set transaction type</string>
+    <string name="set">Set</string>
+    <string name="close">Close</string>
+</resources>

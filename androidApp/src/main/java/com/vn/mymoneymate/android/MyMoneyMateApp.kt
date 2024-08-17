@@ -7,30 +7,37 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.vn.designsystem.components.MyMoneyMateSuperFab
+import com.vn.designsystem.components.MyMoneyMateFab
 import com.vn.designsystem.theme.MyMoneyMateTheme
 import com.vn.mymoneymate.android.navigation.MyMoneyMateBottomNavBar
 import com.vn.mymoneymate.android.navigation.MyMoneyMateNavHost
+import com.vn.mywallet.transactions.navigateToAddTransactionsScreen
 
 @Composable
 fun MyMoneyMateApp() {
     MyMoneyMateTheme {
         val appState = rememberAppState()
+        val navController = appState.navController
 
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background),
             floatingActionButton = {
-                MyMoneyMateSuperFab { // TODO Show add transaction screen
+                if (appState.isAtTopDestination) {
+                    MyMoneyMateFab {
+                        navController.navigateToAddTransactionsScreen()
+                    }
                 }
             },
             bottomBar = {
-                MyMoneyMateBottomNavBar(
-                    appState.navController,
-                    appState.currentDestination,
-                    appState.topLevelDestinations
-                )
+                if (appState.isAtTopDestination) {
+                    MyMoneyMateBottomNavBar(
+                        navController,
+                        appState.currentDestination,
+                        appState.topLevelDestinations
+                    )
+                }
             },
         ) { innerPadding ->
             MyMoneyMateNavHost(
