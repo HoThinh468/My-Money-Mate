@@ -1,10 +1,8 @@
 package com.vn.designsystem.components.textfields
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,32 +12,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.vn.designsystem.color.MyMoneyMateColors
 
 @Composable
-fun UnderlinedTextField(
+fun UnBorderTextField(
     modifier: Modifier,
     text: String,
     onTextChanged: (newVal: String) -> Unit,
     textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     textColor: Color = MyMoneyMateColors.Black,
-    unfocusedTextColor: Color = MyMoneyMateColors.Black,
     placeHolderText: String = "",
     placeHolderStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     placeHolderTextColor: Color = MyMoneyMateColors.Gray,
-    focusedIndicatorColor: Color = MaterialTheme.colorScheme.primary,
-    unfocusedIndicatorColor: Color = MyMoneyMateColors.Gray,
-    keyboardActions: KeyboardActions = KeyboardActions.Default
+    maxLines: Int = 10
 ) {
-    TextField(
+    OutlinedTextField(
         modifier = modifier,
         value = text,
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color.Transparent,
-            unfocusedContainerColor = Color.Transparent,
-            focusedTextColor = textColor,
-            unfocusedTextColor = unfocusedTextColor,
-            focusedIndicatorColor = focusedIndicatorColor,
-            unfocusedIndicatorColor = unfocusedIndicatorColor
-        ),
-        textStyle = textStyle,
+        onValueChange = onTextChanged,
         placeholder = {
             Text(
                 text = placeHolderText,
@@ -47,18 +34,25 @@ fun UnderlinedTextField(
                 color = placeHolderTextColor
             )
         },
-        onValueChange = onTextChanged,
-        keyboardActions = keyboardActions
+        textStyle = textStyle,
+        colors = TextFieldDefaults.colors(
+            focusedTextColor = textColor,
+            unfocusedTextColor = textColor,
+            focusedContainerColor = Color.Transparent,
+            unfocusedContainerColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        ),
+        maxLines = maxLines
     )
 }
 
 @Preview
 @Composable
-private fun UnderlinedTextFieldPreview() {
-    UnderlinedTextField(
-        modifier = Modifier.fillMaxWidth(),
-        text = "",
-        placeHolderText = "Input amount",
+private fun UnBorderTextFieldPreview() {
+    UnBorderTextField(
+        modifier = Modifier,
+        text = "Simple preview text field",
         onTextChanged = { /* Do nothing */ }
     )
 }

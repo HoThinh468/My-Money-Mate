@@ -62,9 +62,21 @@ internal fun AddTransactionsContent(
     val focusRequester = remember {
         FocusRequester()
     }
+    var showTransactionTypeModalBottomSheet by remember {
+        mutableStateOf(false)
+    }
+    var showAddMoneyAmountModalBottomSheet by remember {
+        mutableStateOf(false)
+    }
+    var showAddTransactionDescriptionModalBottomSheet by remember {
+        mutableStateOf(false)
+    }
+    var transactionType by remember {
+        mutableStateOf(TransactionType.INCOME)
+    }
+
     val focusManager = LocalFocusManager.current
     val sheetState = rememberModalBottomSheetState()
-    var showBottomSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = Modifier
@@ -79,11 +91,16 @@ internal fun AddTransactionsContent(
                 navigationIcon = Icons.Default.Close,
                 actionComposable = {
                     OutlinedButtonWithIcon(
-                        buttonText = stringResource(id = R.string.income),
-                        iconRes = com.vn.designsystem.R.drawable.ic_income,
+                        buttonText = stringResource(
+                            id = if (transactionType == TransactionType.INCOME) R.string.income
+                            else R.string.expenses
+                        ),
+                        iconRes = if (transactionType == TransactionType.INCOME) {
+                            com.vn.designsystem.R.drawable.ic_income
+                        } else com.vn.designsystem.R.drawable.ic_expense,
                         borderColor = MyMoneyMateColors.Gray
                     ) {
-                        showBottomSheet = true
+                        showTransactionTypeModalBottomSheet = true
                     }
                 }
             ) {
@@ -98,17 +115,46 @@ internal fun AddTransactionsContent(
             }
         }
     ) { innerPadding ->
-        if (showBottomSheet) {
-            ChangeTransactionTypeModalBottomSheet(sheetState = sheetState) {
-                showBottomSheet = false
-            }
+        if (showTransactionTypeModalBottomSheet) {
+            ChangeTransactionTypeModalBottomSheet(
+                sheetState = sheetState,
+                onDismissModalBottomSheet = { type ->
+                    showTransactionTypeModalBottomSheet = false
+                    if (type != null) {
+                        transactionType = type
+                    }
+                },
+                transactionType = transactionType
+            )
+        }
+        if (showAddMoneyAmountModalBottomSheet) {
+            AddMoneyAmountModalBottomSheet(
+                sheetState = sheetState,
+                onSaveAmount = {
+                    // Save amount to viewmodel
+                },
+                onDismiss = {
+                    showAddMoneyAmountModalBottomSheet = false
+                }
+            )
+        }
+        if (showAddTransactionDescriptionModalBottomSheet) {
+            AddTransactionDescriptionModalBottomSheet(
+                sheetState = sheetState,
+                onSaveDescription = {
+                    // Save description to viewmodel
+                },
+                onDismiss = {
+                    showAddTransactionDescriptionModalBottomSheet = false
+                }
+            )
         }
         Column(
             modifier
                 .padding(innerPadding)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState()),
-            ) {
+        ) {
             UnderlinedTextField(
                 modifier = Modifier
                     .padding(horizontal = mediumSpacing)
@@ -118,10 +164,8 @@ internal fun AddTransactionsContent(
                 textStyle = MaterialTheme.typography.titleLarge,
                 placeHolderStyle = MaterialTheme.typography.titleLarge,
                 placeHolderText = stringResource(id = R.string.transaction_title),
-                placeHolderTextColor = MyMoneyMateColors.Gray
-            ) {
-                transactionTitle = it
-            }
+                onTextChanged = { transactionTitle = it }
+            )
             Spacer(modifier = Modifier.height(normalSpacing))
             OutlinedButtonWithIcon(
                 modifier = Modifier.padding(horizontal = mediumSpacing),
@@ -149,30 +193,33 @@ internal fun AddTransactionsContent(
                     .fillMaxWidth(),
                 leadingIconRes = com.vn.designsystem.R.drawable.ic_payments,
                 trailingIconRes = com.vn.designsystem.R.drawable.ic_us_dollar_sign,
-                cardTitle = "1000"
-            ) {
-                // Open bottom sheet to add description
-            }
+                cardTitle = "0",
+                onCardClick = {
+                    showAddMoneyAmountModalBottomSheet = true
+                }
+            )
             Spacer(modifier = Modifier.height(mediumSpacing))
             FullWidthClickableCardViewWithIcon(
                 modifier = Modifier
                     .padding(horizontal = mediumSpacing)
                     .fillMaxWidth(),
                 leadingIconRes = com.vn.designsystem.R.drawable.ic_notes,
-                cardTitle = stringResource(id = R.string.add_description)
-            ) {
-                // Open bottom sheet to add description
-            }
+                cardTitle = stringResource(id = R.string.add_description),
+                onCardClick = {
+                    showAddTransactionDescriptionModalBottomSheet = true
+                }
+            )
             Spacer(modifier = Modifier.height(mediumSpacing))
             FullWidthClickableCardViewWithIcon(
                 modifier = Modifier
                     .padding(horizontal = mediumSpacing)
                     .fillMaxWidth(),
                 leadingIconRes = com.vn.designsystem.R.drawable.ic_attachment,
-                cardTitle = stringResource(id = R.string.add_image)
-            ) {
-                // Open camera to request
-            }
+                cardTitle = stringResource(id = R.string.add_image),
+                onCardClick = {
+                    // Open camera to request
+                }
+            )
         }
     }
 }

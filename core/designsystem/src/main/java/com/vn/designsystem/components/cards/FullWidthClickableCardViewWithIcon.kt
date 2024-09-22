@@ -1,6 +1,8 @@
 package com.vn.designsystem.components.cards
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.vn.designsystem.R
 import com.vn.designsystem.color.MyMoneyMateColors
 import com.vn.designsystem.dimension.cardMinHeight
@@ -28,13 +31,15 @@ import com.vn.designsystem.dimension.mediumSpacing
 
 @Composable
 fun FullWidthClickableCardViewWithIcon(
-    modifier: Modifier = Modifier,
-    backgroundColor: Color = MyMoneyMateColors.ExtraLightGray,
-    contentColor: Color = MaterialTheme.colorScheme.onBackground,
     cardTitle: String,
-    @DrawableRes trailingIconRes: Int? = null,
     @DrawableRes leadingIconRes: Int,
-    onCardClick: () -> Unit
+    onCardClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    @DrawableRes trailingIconRes: Int? = null,
+    trailingComposable: @Composable () -> Unit = {},
+    backgroundColor: Color = MyMoneyMateColors.White,
+    contentColor: Color = MaterialTheme.colorScheme.onBackground,
+    cardContent: (@Composable () -> Unit)? = null
 ) {
     Card(
         modifier = modifier
@@ -45,32 +50,36 @@ fun FullWidthClickableCardViewWithIcon(
             containerColor = backgroundColor,
             contentColor = contentColor
         ),
-        onClick = onCardClick
+        onClick = onCardClick,
+        border = BorderStroke(width = 1.dp, color = MyMoneyMateColors.LightGray)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(mediumSpacing),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                painter = painterResource(id = leadingIconRes),
-                tint = contentColor,
-                contentDescription = "Card leading icon"
-            )
-            Text(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(horizontal = mediumSpacing),
-                text = cardTitle,
-                style = MaterialTheme.typography.titleSmall
-            )
-            if (trailingIconRes != null) {
+        Column(modifier = Modifier.fillMaxSize().padding(mediumSpacing)) {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Icon(
-                    painter = painterResource(id = trailingIconRes),
+                    painter = painterResource(id = leadingIconRes),
                     tint = contentColor,
-                    contentDescription = "Card trailing icon"
+                    contentDescription = "Card leading icon"
                 )
+                Text(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(horizontal = mediumSpacing),
+                    text = cardTitle,
+                    style = MaterialTheme.typography.titleSmall
+                )
+                if (trailingIconRes != null) {
+                    Icon(
+                        painter = painterResource(id = trailingIconRes),
+                        tint = contentColor,
+                        contentDescription = "Card trailing icon"
+                    )
+                } else trailingComposable()
+            }
+            if (cardContent != null) {
+                cardContent()
             }
         }
     }

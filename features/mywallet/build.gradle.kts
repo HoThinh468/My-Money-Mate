@@ -8,3 +8,7 @@ plugins {
 android {
     namespace = "com.vn.mywallet"
 }
+
+dependencies {
+    implementation(projects.shared)
+}
