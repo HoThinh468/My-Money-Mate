@@ -12,6 +12,9 @@ android {
 }
 
 dependencies {
+    // share sections
+    implementation(projects.shared)
+
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
     implementation(libs.compose.ui.tooling.preview)
@@ -19,5 +22,4 @@ dependencies {
     implementation(libs.compose.nav)
     implementation(libs.compose.material3)
     implementation(libs.compose.constraint.layout)
-
 }

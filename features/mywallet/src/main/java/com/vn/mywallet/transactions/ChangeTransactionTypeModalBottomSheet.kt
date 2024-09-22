@@ -27,14 +27,15 @@ import com.vn.mywallet.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ChangeTransactionTypeModalBottomSheet(
-    modifier: Modifier = Modifier,
     sheetState: SheetState,
-    onDismissModalBottomSheet: () -> Unit
+    onDismissModalBottomSheet: (selectedTransactionType: TransactionType?) -> Unit,
+    modifier: Modifier = Modifier,
+    transactionType: TransactionType = TransactionType.INCOME
 ) {
-    var transactionType by remember { mutableStateOf(TransactionType.INCOME) }
+    var selectedTransactionType by remember { mutableStateOf(transactionType) }
     ModalBottomSheet(
         onDismissRequest = {
-            onDismissModalBottomSheet()
+            onDismissModalBottomSheet(null)
         },
         sheetState = sheetState,
         containerColor = MaterialTheme.colorScheme.background
@@ -52,30 +53,32 @@ internal fun ChangeTransactionTypeModalBottomSheet(
             FullWidthClickableCardViewWithIcon(
                 cardTitle = stringResource(id = R.string.income),
                 leadingIconRes = com.vn.designsystem.R.drawable.ic_income,
-                backgroundColor = if (transactionType == TransactionType.INCOME) {
+                backgroundColor = if (selectedTransactionType == TransactionType.INCOME) {
                     MaterialTheme.colorScheme.secondary
                 } else MaterialTheme.colorScheme.surface,
-                contentColor = if (transactionType == TransactionType.INCOME) {
+                contentColor = if (selectedTransactionType == TransactionType.INCOME) {
                     MaterialTheme.colorScheme.onSecondary
-                } else MaterialTheme.colorScheme.onSurface
-            ) {
-                transactionType = TransactionType.INCOME
-                onDismissModalBottomSheet()
-            }
+                } else MaterialTheme.colorScheme.onSurface,
+                onCardClick = {
+                    selectedTransactionType = TransactionType.INCOME
+                    onDismissModalBottomSheet(selectedTransactionType)
+                }
+            )
             Spacer(modifier = Modifier.height(normalSpacing))
             FullWidthClickableCardViewWithIcon(
                 cardTitle = stringResource(id = R.string.expenses),
                 leadingIconRes = com.vn.designsystem.R.drawable.ic_expense,
-                backgroundColor = if (transactionType == TransactionType.EXPENSE) {
+                backgroundColor = if (selectedTransactionType == TransactionType.EXPENSE) {
                     MaterialTheme.colorScheme.secondary
                 } else MaterialTheme.colorScheme.surface,
-                contentColor = if (transactionType == TransactionType.EXPENSE) {
+                contentColor = if (selectedTransactionType == TransactionType.EXPENSE) {
                     MaterialTheme.colorScheme.onSecondary
-                } else MaterialTheme.colorScheme.onSurface
-            ) {
-                transactionType = TransactionType.EXPENSE
-                onDismissModalBottomSheet()
-            }
+                } else MaterialTheme.colorScheme.onSurface,
+                onCardClick = {
+                    selectedTransactionType = TransactionType.EXPENSE
+                    onDismissModalBottomSheet(selectedTransactionType)
+                }
+            )
             Spacer(modifier = Modifier.height(extraLargeSpacing))
         }
     }
@@ -86,8 +89,9 @@ internal fun ChangeTransactionTypeModalBottomSheet(
 @Composable
 private fun ChangeTransactionTypeModalBottomSheetPreview() {
     ChangeTransactionTypeModalBottomSheet(
-        sheetState = rememberModalBottomSheetState()
-    ) {
-        // Do nothing
-    }
+        sheetState = rememberModalBottomSheetState(),
+        onDismissModalBottomSheet = {
+            // Do nothing
+        }
+    )
 }
