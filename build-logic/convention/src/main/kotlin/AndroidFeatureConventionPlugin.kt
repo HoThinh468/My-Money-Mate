@@ -12,6 +12,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
             dependencies {
                 add("implementation", project(":core:designsystem"))
+                add("implementation", project(":core:utility"))
                 add("implementation", libs.findLibrary("compose-ui").get())
                 add("implementation", libs.findLibrary("compose-nav").get())
                 add(
@@ -25,6 +26,10 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add(
                     "implementation",
                     libs.findLibrary("androidx-lifecycle-viewModelCompose").get()
+                )
+                add(
+                    "implementation",
+                    libs.findLibrary("androidx-activity-compose").get()
                 )
             }
         }

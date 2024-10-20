@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -22,12 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.vn.designsystem.R
 import com.vn.designsystem.color.MyMoneyMateColors
 import com.vn.designsystem.dimension.cardMinHeight
 import com.vn.designsystem.dimension.mediumRadius
 import com.vn.designsystem.dimension.mediumSpacing
+import com.vn.designsystem.dimension.smallSpacing
 
 @Composable
 fun FullWidthClickableCardViewWithIcon(
@@ -39,7 +41,8 @@ fun FullWidthClickableCardViewWithIcon(
     trailingComposable: @Composable () -> Unit = {},
     backgroundColor: Color = MyMoneyMateColors.White,
     contentColor: Color = MaterialTheme.colorScheme.onBackground,
-    cardContent: (@Composable () -> Unit)? = null
+    cardContent: (@Composable () -> Unit)? = null,
+    borderWidth: Dp = 1.dp
 ) {
     Card(
         modifier = modifier
@@ -51,9 +54,11 @@ fun FullWidthClickableCardViewWithIcon(
             contentColor = contentColor
         ),
         onClick = onCardClick,
-        border = BorderStroke(width = 1.dp, color = MyMoneyMateColors.LightGray)
+        border = BorderStroke(width = borderWidth, color = MyMoneyMateColors.LightGray)
     ) {
-        Column(modifier = Modifier.fillMaxSize().padding(mediumSpacing)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(mediumSpacing)) {
             Row(
                 modifier = Modifier.fillMaxSize(),
                 verticalAlignment = Alignment.CenterVertically
@@ -79,6 +84,7 @@ fun FullWidthClickableCardViewWithIcon(
                 } else trailingComposable()
             }
             if (cardContent != null) {
+                Spacer(modifier = Modifier.height(smallSpacing))
                 cardContent()
             }
         }

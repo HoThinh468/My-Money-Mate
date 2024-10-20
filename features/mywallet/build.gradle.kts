@@ -11,4 +11,7 @@ android {
 
 dependencies {
     implementation(projects.shared)
+
+    // Specific
+    implementation(libs.coilCompose)
 }

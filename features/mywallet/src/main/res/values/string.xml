@@ -13,4 +13,6 @@
     <string name="add_image">Add image</string>
     <string name="set_transaction_type">Set transaction type</string>
     <string name="input_amount">Input amount</string>
+    <string name="choose_from_my_library">Choose from my library</string>
+    <string name="take_a_picture">Take a picture</string>
 </resources>

@@ -14,6 +14,7 @@ appcompat = "1.6.1"
 material = "1.11.0"
 androidGradlePlugin = "8.2.2"
 compose-constraint-layout = "1.0.1"
+coilCompose = "2.7.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -38,6 +39,9 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+
+# My wallet feature
+coilCompose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilCompose"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
