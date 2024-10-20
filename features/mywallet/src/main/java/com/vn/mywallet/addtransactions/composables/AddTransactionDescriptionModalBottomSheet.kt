@@ -1,4 +1,4 @@
-package com.vn.mywallet.transactions
+package com.vn.mywallet.addtransactions.composables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -72,7 +72,7 @@ fun AddTransactionDescriptionModalBottomSheet(
                 text = newDescription,
                 onTextChanged = {
                     if (it.length <= descriptionMaxLength) {
-                        setNewDescription(it)
+                        setNewDescription(it.trim())
                     }
                 },
                 placeHolderText = stringResource(id = R.string.add_description_place_holder_text)
@@ -93,6 +93,7 @@ fun AddTransactionDescriptionModalBottomSheet(
                     iconRes = com.vn.designsystem.R.drawable.ic_done
                 ) {
                     onSaveDescription(newDescription)
+                    onDismiss()
                 }
             }
         }

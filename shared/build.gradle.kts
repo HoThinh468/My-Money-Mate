@@ -38,6 +38,6 @@ android {
     namespace = "com.vn.mymoneymate"
     compileSdk = 34
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
     }
 }

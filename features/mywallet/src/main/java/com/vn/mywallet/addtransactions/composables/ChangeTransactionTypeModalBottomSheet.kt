@@ -1,4 +1,4 @@
-package com.vn.mywallet.transactions
+package com.vn.mywallet.addtransactions.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +23,7 @@ import com.vn.designsystem.components.cards.FullWidthClickableCardViewWithIcon
 import com.vn.designsystem.dimension.extraLargeSpacing
 import com.vn.designsystem.dimension.normalSpacing
 import com.vn.mywallet.R
+import com.vn.mywallet.addtransactions.TransactionType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

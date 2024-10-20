@@ -11,7 +11,7 @@ import com.vn.designsystem.components.MyMoneyMateFab
 import com.vn.designsystem.theme.MyMoneyMateTheme
 import com.vn.mymoneymate.android.navigation.MyMoneyMateBottomNavBar
 import com.vn.mymoneymate.android.navigation.MyMoneyMateNavHost
-import com.vn.mywallet.transactions.navigateToAddTransactionsScreen
+import com.vn.mywallet.addtransactions.navigateToAddTransactionsScreen
 
 @Composable
 fun MyMoneyMateApp() {

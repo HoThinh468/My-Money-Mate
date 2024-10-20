@@ -1,4 +1,4 @@
-package com.vn.mywallet.transactions
+package com.vn.mywallet.addtransactions.composables
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,7 +31,7 @@ import com.vn.mywallet.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddMoneyAmountModalBottomSheet(
+internal fun AddMoneyAmountModalBottomSheet(
     sheetState: SheetState,
     onSaveAmount: (amount: Long) -> Unit,
     onDismiss: () -> Unit
