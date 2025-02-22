@@ -10,7 +10,7 @@ android {
 }
 
 dependencies {
-    implementation(projects.shared)
+    implementation(projects.shared.mywallet)
 
     // Specific
     implementation(libs.coilCompose)

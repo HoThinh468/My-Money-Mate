@@ -34,5 +34,9 @@ gradlePlugin {
             id = "mymoneymate.android.feature.presentation"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
+        register("myMoneyMateKMP") {
+            id = "mymoneymate.kmp"
+            implementationClass = "KMPPlugin"
+        }
     }
 }
