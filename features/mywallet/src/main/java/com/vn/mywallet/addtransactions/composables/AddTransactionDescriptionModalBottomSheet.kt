@@ -31,7 +31,7 @@ import com.vn.mywallet.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTransactionDescriptionModalBottomSheet(
+internal fun AddTransactionDescriptionModalBottomSheet(
     onDismiss: () -> Unit,
     onSaveDescription: (description: String) -> Unit,
     sheetState: SheetState,

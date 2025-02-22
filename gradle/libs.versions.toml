@@ -15,6 +15,7 @@ material = "1.11.0"
 androidGradlePlugin = "8.2.2"
 compose-constraint-layout = "1.0.1"
 coilCompose = "2.7.0"
+jetbrainsKotlinJvm = "1.9.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -56,3 +57,4 @@ mymoneymateAndroidLibrary = { id = "mymoneymate.android.library", version = "uns
 mymoneymateAndroidLibraryCompose = { id = "mymoneymate.android.library.compose", version = "unspecified" }
 mymoneymateAndroidApplication = { id = "mymoneymate.android.application", version = "unspecified" }
 mymoneymateAndroidApplicationCompose = { id = "mymoneymate.android.application.compose", version = "unspecified" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }

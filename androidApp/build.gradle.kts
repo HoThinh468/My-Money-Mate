@@ -19,7 +19,7 @@ android {
 
 dependencies {
     // Shared & common
-    implementation(projects.shared)
+    implementation(projects.shared.mywallet)
     implementation(projects.core.designsystem)
 
     // features
