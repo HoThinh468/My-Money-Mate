@@ -12,15 +12,15 @@ enum class TopLevelDestination(
     @StringRes val label: Int,
     @DrawableRes val icon: Int
 ) {
-    MY_WALLET_SCREEN(MY_WALLET_ROUTE, R.string.wallet_label, R.drawable.ic_wallet),
-    BUDGETS_SCREEN(BUDGETS_ROUTE, R.string.budget_label, R.drawable.ic_payment),
-    REPORT_SCREEN(REPORT_ROUTE, R.string.report_label, R.drawable.ic_bar_chart);
+    MyWalletScreen(MY_WALLET_ROUTE, R.string.wallet_label, R.drawable.ic_wallet),
+    BudgetScreen(BUDGETS_ROUTE, R.string.budget_label, R.drawable.ic_payment),
+    ReportScreen(REPORT_ROUTE, R.string.report_label, R.drawable.ic_bar_chart);
 
     companion object {
         fun getCurrentTopLevelDestination(route: String?): TopLevelDestination? = when (route) {
-            MY_WALLET_SCREEN.route -> MY_WALLET_SCREEN
-            BUDGETS_SCREEN.route -> BUDGETS_SCREEN
-            REPORT_SCREEN.route -> REPORT_SCREEN
+            MyWalletScreen.route -> MyWalletScreen
+            BudgetScreen.route -> BudgetScreen
+            ReportScreen.route -> ReportScreen
             else -> null
         }
     }

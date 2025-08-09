@@ -14,7 +14,7 @@ import com.vn.mymoneymate.android.navigation.MyMoneyMateNavHost
 import com.vn.mywallet.addtransactions.navigateToAddTransactionsScreen
 
 @Composable
-fun MyMoneyMateApp() {
+internal fun MyMoneyMateApp() {
     MyMoneyMateTheme {
         val appState = rememberAppState()
         val navController = appState.navController

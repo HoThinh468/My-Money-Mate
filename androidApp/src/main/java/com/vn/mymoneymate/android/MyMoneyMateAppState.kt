@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.vn.mymoneymate.android.navigation.TopLevelDestination
 
 @Composable
-fun rememberAppState(
+internal fun rememberAppState(
     navController: NavHostController = rememberNavController()
 ): MyMoneyMateAppState {
     return remember {

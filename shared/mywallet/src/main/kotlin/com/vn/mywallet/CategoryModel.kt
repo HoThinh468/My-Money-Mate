@@ -1,4 +1,4 @@
 package com.vn.mywallet
 
-class MyClass {
+class CategoryModel {
 }

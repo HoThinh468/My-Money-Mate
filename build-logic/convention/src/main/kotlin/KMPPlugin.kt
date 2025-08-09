@@ -7,13 +7,13 @@ import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 class KMPPlugin : Plugin<Project> {
-    override fun apply(target: Project) {
-        with(target) {
-            pluginManager.apply("org.jetbrains.kotlin.multiplatform")
-            pluginManager.apply("com.android.library")
-
-            configureKMPExtension(extensions.getByType<KotlinMultiplatformExtension>())
-            configureKMPAndroidExtension(extensions.getByType<LibraryExtension>())
+    override fun apply(target: Project) = with(target) {
+        pluginManager.run {
+            apply("org.jetbrains.kotlin.multiplatform")
+            apply("com.android.library")
         }
+
+        configureKMPExtension(extensions.getByType<KotlinMultiplatformExtension>())
+        configureKMPAndroidExtension(extensions.getByType<LibraryExtension>())
     }
 }

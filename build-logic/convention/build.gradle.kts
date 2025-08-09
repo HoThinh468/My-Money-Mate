@@ -38,5 +38,9 @@ gradlePlugin {
             id = "mymoneymate.kmp"
             implementationClass = "KMPPlugin"
         }
+        register("myMoneyMateRoomKMP") {
+            id = "mymoneymate.kmp.room"
+            implementationClass = "KMPRoomPlugin"
+        }
     }
 }
